@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 📊 Personal Finance Visualizer
 
-First, run the development server:
+A modern, intuitive web application for tracking personal income, expenses, budgets, and financial insights — all in one place. Built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
+
+## 🚀 Features
+
+- 💸 Add and view income/expense transactions
+- 📆 Track monthly trends with interactive charts
+- 📊 Create budgets and visualize budget utilization
+- 📈 Get financial insights from your spending habits
+- 🧭 Smooth scroll navigation between sections
+- ✏️ Edit and manage your transaction history
+- 🔄 Auto-refresh after every data update
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React + Next.js (App Router, Client Components)
+- **Styling:** Tailwind CSS
+- **Charts:** Recharts
+- **Backend:** API routes with Axios for data fetching
+- **Database:** You can connect to MongoDB, PostgreSQL, or any backend of choice
+
+## 📁 Project Structure
+
+
+
+app/
+├─ page.tsx               # Main UI with scrolling sections
+├─ components/
+├─ TransactionForm.tsx
+├─ TransactionList.tsx
+├─ BudgetForm.tsx
+├─ BudgetInsights.tsx
+├─ MonthlyChart.tsx
+└─ ui/ (Buttons, Cards etc.)
+├─ api/
+├─ transactions/
+├─ budgets/
+
+
+
+ 📸 Preview
+![image](https://github.com/user-attachments/assets/e204567e-1925-4b10-ae23-7ed13c65965a)
+![image](https://github.com/user-attachments/assets/16594610-808b-4315-a8dc-6c6d3cab25db)
+![image](https://github.com/user-attachments/assets/695ca407-bfe0-444d-a6a4-8c0cd11f9bcc)
+![image](https://github.com/user-attachments/assets/037933a5-2c92-4d0a-a3bf-59e987892319)
+
+
+
+## 🧑‍💻 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/personal-finance-visualizer.git
+cd personal-finance-visualizer
+````
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Open in browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 Deployment
 
-## Learn More
+This project is ready for deployment on platforms like **Vercel**, **Netlify**, or **Render**. Simply connect your GitHub repo and deploy!
 
-To learn more about Next.js, take a look at the following resources:
+## 🙌 Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Feel free to open issues or submit pull requests for features or bug fixes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
