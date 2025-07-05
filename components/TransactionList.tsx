@@ -4,7 +4,21 @@ import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import dayjs from 'dayjs';
 
-export default function TransactionList({ txns, refresh }: { txns: any[]; refresh: () => void }) {
+type Transaction = {
+  _id: string;
+  amount: number;
+  date: string;
+  description: string;
+  category: string;
+};
+
+export default function TransactionList({
+  txns,
+  refresh,
+}: {
+  txns: Transaction[];
+  refresh: () => void;
+}) {
   const handleDelete = async (id: string) => {
     await axios.delete(`/api/transactions/${id}`);
     refresh();
@@ -17,12 +31,16 @@ export default function TransactionList({ txns, refresh }: { txns: any[]; refres
         {txns.map((txn) => (
           <li key={txn._id} className="flex justify-between border p-2 rounded">
             <div>
-              <p>{txn.description} - ₹{txn.amount}</p>
+              <p>
+                {txn.description} - ₹{txn.amount}
+              </p>
               <p className="text-sm text-gray-500">
                 {dayjs(txn.date).format('YYYY-MM-DD')} | {txn.category}
               </p>
             </div>
-            <Button variant="destructive" onClick={() => handleDelete(txn._id)}>Delete</Button>
+            <Button variant="destructive" onClick={() => handleDelete(txn._id)}>
+              Delete
+            </Button>
           </li>
         ))}
       </ul>

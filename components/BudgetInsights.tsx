@@ -1,17 +1,48 @@
 'use client';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from 'recharts';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#8dd1e1', '#a4de6c'];
 
-export default function BudgetInsights({ transactions, budgets }: { transactions: any[], budgets: any[] }) {
+type Transaction = {
+  category: string;
+  amount: number;
+};
+
+type Budget = {
+  category: string;
+  amount: number;
+};
+
+export default function BudgetInsights({
+  transactions,
+  budgets,
+}: {
+  transactions: Transaction[];
+  budgets: Budget[];
+}) {
   const grouped: { [key: string]: number } = {};
-  transactions.forEach(t => {
+  transactions.forEach((t) => {
     if (!grouped[t.category]) grouped[t.category] = 0;
     grouped[t.category] += t.amount;
   });
 
-  const pieData = Object.entries(grouped).map(([cat, amt]) => ({ name: cat, value: amt }));
-  const budgetCompare = budgets.map(b => ({
+  const pieData = Object.entries(grouped).map(([cat, amt]) => ({
+    name: cat,
+    value: amt,
+  }));
+
+  const budgetCompare = budgets.map((b) => ({
     category: b.category,
     budget: b.amount,
     spent: grouped[b.category] || 0,
@@ -26,7 +57,13 @@ export default function BudgetInsights({ transactions, budgets }: { transactions
           <h3 className="font-medium">Category-wise Spending</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
-              <Pie data={pieData} dataKey="value" nameKey="name" outerRadius={100} label>
+              <Pie
+                data={pieData}
+                dataKey="value"
+                nameKey="name"
+                outerRadius={100}
+                label
+              >
                 {pieData.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
