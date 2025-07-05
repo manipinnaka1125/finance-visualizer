@@ -18,11 +18,29 @@ export default function BudgetForm({ onSuccess }: { onSuccess: () => void }) {
   };
 
   return (
-    <div className="space-y-2">
-      <h2 className="text-xl font-semibold">Add Budget</h2>
-      <Input placeholder="Category" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} />
-      <Input type="number" placeholder="Amount" value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} />
-      <Button onClick={handleSubmit}>Add Budget</Button>
+    <div className="space-y-4 bg-gray-50 p-6 rounded-xl shadow">
+      <h2 className="text-2xl font-bold text-gray-800">🎯 Add Budget</h2>
+      <div className="grid gap-4">
+        <Input
+          placeholder="e.g. Food, Rent"
+          value={form.category}
+          className="border border-gray-300"
+          onChange={(e) => setForm({ ...form, category: e.target.value })}
+        />
+        <Input
+          type="number"
+          placeholder="Amount (₹)"
+          value={form.amount}
+          className="border border-gray-300"
+          onChange={(e) => setForm({ ...form, amount: e.target.value })}
+        />
+        <Button
+          className="bg-blue-600 hover:bg-blue-700 transition text-white"
+          onClick={handleSubmit}
+        >
+          ➕ Add Budget
+        </Button>
+      </div>
     </div>
   );
 }

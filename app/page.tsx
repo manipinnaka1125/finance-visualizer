@@ -1,3 +1,4 @@
+
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -24,12 +25,28 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Personal Finance Visualizer</h1>
-      <TransactionForm onSuccess={fetchAll} />
-      <TransactionList txns={txns} refresh={fetchAll} />
-      <BudgetForm onSuccess={fetchAll} />
-      <BudgetInsights transactions={txns} budgets={budgets} />
+    <main className="p-6 max-w-5xl mx-auto space-y-10">
+      <h1 className="text-3xl font-bold text-center">📊 Personal Finance Visualizer</h1>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-white p-5 rounded-2xl shadow-md">
+          <h2 className="text-lg font-semibold mb-4">Add Transaction</h2>
+          <TransactionForm onSuccess={fetchAll} />
+        </div>
+
+        <div className="bg-white p-5 rounded-2xl shadow-md">
+          <h2 className="text-lg font-semibold mb-4">Add Budget</h2>
+          <BudgetForm onSuccess={fetchAll} />
+        </div>
+      </div>
+
+      <div className="bg-white p-5 rounded-2xl shadow-md">
+        <TransactionList txns={txns} refresh={fetchAll} />
+      </div>
+
+      <div className="bg-white p-5 rounded-2xl shadow-md">
+        <BudgetInsights transactions={txns} budgets={budgets} />
+      </div>
     </main>
   );
 }
